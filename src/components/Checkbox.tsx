@@ -4,19 +4,15 @@ import { useEffect, useRef, useState } from "react";
 
 const Checkbox = ({fetchCat, changeToggle, toggle}: {fetchCat: () => void, changeToggle: () => void, toggle:boolean}) => {
   const [checked, setChecked] = useState<boolean>(false)
-  const [timerActive, setTimerActive] = useState<boolean>(false)
   let interval = useRef<number | null>(null)
   useEffect(() => {
     if(!toggle) return 
     if(checked){
-      setTimerActive(true)
       interval.current = setInterval(() => {
-        setTimerActive(false)
         console.log(123);
         (() => fetchCat())()
       }, 1000)
     } else {
-      setTimerActive(false)
       if(interval.current !== null){
         clearInterval(interval.current)
       }
