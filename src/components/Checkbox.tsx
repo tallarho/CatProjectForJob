@@ -9,9 +9,8 @@ const Checkbox = ({fetchCat, changeToggle, toggle}: {fetchCat: () => void, chang
     if(!toggle) return 
     if(checked){
       interval.current = setInterval(() => {
-        console.log(123);
         (() => fetchCat())()
-      }, 1000)
+      }, 5000)
     } else {
       if(interval.current !== null){
         clearInterval(interval.current)
